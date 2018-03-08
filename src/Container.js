@@ -320,17 +320,17 @@ class Container extends Component {
                  );
                }}
               />
-            <Route exact path="/signup" render={() => {
+            <Route exact path="/signup" render={routerProps => {
                 return(
                   <SignUp create={this.createUser}/>
                 );
               }} />
-            <Route exact path="/login" render={() => {
+            <Route exact path="/login" render={routerProps => {
                 return(
                   <Login />
                 );
               }} />
-            <Route exact path="/profile" component={() => {
+            <Route exact path="/profile" component={routerProps => {
                 return(
                   <UserProfile
                     user={this.state.user}
@@ -341,7 +341,7 @@ class Container extends Component {
                 )
               }} />
 
-            <Route exact path="/new_cocktail" render={() => {
+            <Route exact path="/new_cocktail" render={routerProps => {
                 return(
                   <CocktailForm onChange={this.handleCocktailChange}
                                 value={this.state.formValue}
@@ -349,7 +349,7 @@ class Container extends Component {
                 );
               }}
             />
-          <Route exact path="/edit_cocktail" render={() => {
+          <Route exact path="/edit_cocktail" render={routerProps => {
                 return(
                   <EditCocktailForm onChange={this.handleUpdateChange}
                                 value={this.state.drinkToEdit}
@@ -357,7 +357,7 @@ class Container extends Component {
                 );
               }}
             />
-          <Route exact path="/show_cocktail" render={() => {
+          <Route exact path="/show_cocktail" render={routerProps => {
                 return(
                   <div>
                     <UserProfile

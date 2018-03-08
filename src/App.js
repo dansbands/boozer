@@ -66,9 +66,14 @@ class App extends React.Component {
               </div>
           }
           {Object.keys(this.state.auth.currentUser).length &&
-            <Container
-              logout={this.handleLogout}
-              login={this.state.auth.currentUser}/>
+            <Route
+              path="/" render={
+                routerProps => {
+                  <Container
+                    logout={this.handleLogout}
+                    login={this.state.auth.currentUser}/>    
+                }
+              } />
           }
 
 
