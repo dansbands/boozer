@@ -50,14 +50,16 @@ class App extends React.Component {
                 exact
                 path="/" render={routerProps => {
                   return(
-                    <Login handleLogin={this.handleLogin}/>
+                    <Login {...routerProps}
+                      handleLogin={this.handleLogin}/>
 
                   )
                 }}
                 />
               <Route exact path="/login" render={routerProps => {
                   return(
-                    <Login handleLogin={this.handleLogin}/>
+                    <Login {...routerProps}
+                      handleLogin={this.handleLogin}/>
 
                   )
                 }}
@@ -65,11 +67,17 @@ class App extends React.Component {
               <Route exact path="/signup" component={SignUp} />
             </div>
           ) : (
-                  <Container
-                    logout={this.handleLogout}
-                    login={this.state.auth.currentUser}/>
-
-
+              <Route
+                path="/"
+                render={
+                  routerProps => {
+                    return(
+                      <Container {...routerProps}
+                        logout={this.handleLogout}
+                        login={this.state.auth.currentUser}/>
+                    )
+                  }
+                } />
             )
           }
 
