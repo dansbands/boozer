@@ -2,7 +2,7 @@
   "name": "boozer-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://silviachung.github.io/boozer/",
+  "homepage": "https://dansbands.github.io/boozer/",
   "dependencies": {
     "gh-pages": "^1.1.0",
     "react": "^16.2.0",

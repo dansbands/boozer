@@ -44,36 +44,33 @@ class App extends React.Component {
       <Router basename="/boozer">
         <div className="container">
 
-          {!Object.keys(this.state.auth.currentUser).length &&
-              <div>
-                <Route
-                  exact
-                  path="/" render={routerProps => {
-                    return(
-                      <Login handleLogin={this.handleLogin}/>
+          {!Object.keys(this.state.auth.currentUser).length ? (
+            <div>
+              <Route
+                exact
+                path="/" render={routerProps => {
+                  return(
+                    <Login handleLogin={this.handleLogin}/>
 
-                    )
-                  }}
+                  )
+                }}
                 />
               <Route exact path="/login" render={routerProps => {
-                    return(
-                      <Login handleLogin={this.handleLogin}/>
+                  return(
+                    <Login handleLogin={this.handleLogin}/>
 
-                    )
-                  }}
+                  )
+                }}
                 />
-                <Route exact path="/signup" component={SignUp} />
-              </div>
-          }
-          {Object.keys(this.state.auth.currentUser).length &&
-            <Route
-              path="/" render={
-                routerProps => {
+              <Route exact path="/signup" component={SignUp} />
+            </div>
+          ) : (
                   <Container
                     logout={this.handleLogout}
-                    login={this.state.auth.currentUser}/>    
-                }
-              } />
+                    login={this.state.auth.currentUser}/>
+
+
+            )
           }
 
 
