@@ -15,6 +15,10 @@ import EditCocktailForm from './EditCocktailForm';
 import SavedDrinks from './SavedDrinks';
 
 
+const API_ROOT = `https://boozer.herokuapp.com/api/v1`;
+// const API_ROOT = `http://localhost:3000/api/v1`;
+
+
 class Container extends Component {
   constructor(props) {
     super(props);
@@ -75,7 +79,7 @@ class Container extends Component {
   forNowGetUser = () => {
     if (this.state.user) {
 
-    fetch(`http://localhost:3000/api/v1/users/${this.state.user.id}`)
+    fetch(`${API_ROOT}/users/${this.state.user.id}`)
       .then(resp => resp.json())
       .then(resp => this.setState({ user: resp }))
     }
@@ -90,7 +94,7 @@ class Container extends Component {
 // this also exists in api.apiData.createUser(fields) - not currently being used
 //message from silvia: createUser passes down to SignUp component
   createUser = (fields) => {
-    fetch('http://localhost:3000/api/v1/users',{
+    fetch(`${API_ROOT}/users`,{
       method: 'POST',
       body: JSON.stringify(fields),
       headers: {
@@ -207,7 +211,7 @@ class Container extends Component {
 
   createSavedCocktail = (data) => {
     console.log('saving data', data);
-    fetch('http://localhost:3000/api/v1/saved_drinks', {
+    fetch(`${API_ROOT}/saved_drinks`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -229,7 +233,7 @@ class Container extends Component {
 
   removeSavedDrink = (drinkId) => {
     console.log('this is the drink to remove', drinkId);
-    fetch(`http://localhost:3000/api/v1/saved_drinks/${drinkId}`, {
+    fetch(`${API_ROOT}/saved_drinks/${drinkId}`, {
       method: 'DELETE'
     }).then(resp => resp.json())
       .then(() => this.forNowGetUser())
