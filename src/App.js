@@ -5,7 +5,7 @@ import SignUp from './UserSignUp';
 import Login from './UserLogin';
 
 
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 
 class App extends React.Component {
@@ -41,7 +41,7 @@ class App extends React.Component {
   render(){
     console.log('App State', this.state.auth.currentUser);
     return(
-      <Router basename="/boozer">
+      <Switch>
         <div className="container">
 
           {!Object.keys(this.state.auth.currentUser).length ? (
@@ -78,7 +78,7 @@ class App extends React.Component {
 
 
         </div>
-      </Router>
+      </Switch>
     )
   }
 }
