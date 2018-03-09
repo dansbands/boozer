@@ -17,12 +17,10 @@ const Navbar = (props) => {
         <ul className="nav navbar-nav">
           <li><NavLink
             to="/"
-            exact
             onClick={props.handleRedirect}
             >Home</NavLink></li>
           <li><NavLink
             to="/new_cocktail"
-            exact
             >Create New Cocktail</NavLink></li>
         </ul>
 
@@ -31,10 +29,9 @@ const Navbar = (props) => {
           <li>
             <NavLink
               to="/profile"
-              exact
               ><span className="glyphicon glyphicon-user"></span> Logged in as {props.user ? props.user.firstname : "Loading..."} {props.user ? props.user.lastname : ""}</NavLink>
           </li>
-          <li onClick={props.logout}><a href="/"><span className="glyphicon glyphicon-log-in"></span> LogOut</a></li>
+          <li onClick={props.logout}><a href="/boozer"><span className="glyphicon glyphicon-log-in"></span> LogOut</a></li>
         </ul>
 
       </div>

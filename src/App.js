@@ -5,7 +5,7 @@ import SignUp from './UserSignUp';
 import Login from './UserLogin';
 
 
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 
 class App extends React.Component {
@@ -44,40 +44,48 @@ class App extends React.Component {
       <Switch>
         <div className="container">
 
-          {!Object.keys(this.state.auth.currentUser).length ? (
+          {!Object.keys(this.state.auth.currentUser).length > 0 ? (
+            [
+              <Route
+                key="index"
+                path="/"
+                exact
+                render={routerProps => {
+                  return(
+                    <Login
+                      routerProps={routerProps}
+                      handleLogin={this.handleLogin}/>
+
+                  )
+                }}
+              />,
+            <Route key="login" exact path="/login" render={routerProps => {
+                return(
+                  <Login
+                    routerProps={routerProps}
+                    handleLogin={this.handleLogin}/>
+
+                )
+              }}
+            />,
+          <Route key="signup" exact path="/signup" component={SignUp} />
+            ]
+          ) : (
             <div>
               <Route
-                exact
-                path="/" render={routerProps => {
-                  return(
-                    <Login {...routerProps}
-                      handleLogin={this.handleLogin}/>
-
-                  )
-                }}
-                />
-              <Route exact path="/login" render={routerProps => {
-                  return(
-                    <Login {...routerProps}
-                      handleLogin={this.handleLogin}/>
-
-                  )
-                }}
-                />
-              <Route exact path="/signup" component={SignUp} />
-            </div>
-          ) : (
-              <Route
                 path="/"
+
                 render={
                   routerProps => {
                     return(
-                      <Container {...routerProps}
+                      <Container
+                        routerProps={routerProps}
                         logout={this.handleLogout}
                         login={this.state.auth.currentUser}/>
                     )
                   }
                 } />
+            </div>
             )
           }
 
