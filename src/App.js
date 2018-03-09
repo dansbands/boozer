@@ -18,7 +18,7 @@ class App extends React.Component {
     // }
     if (localStorage.getItem('token')) {
       api.apiData.currentUser().then(user => {
-        console.log('response is', user);
+        // console.log('response is', user);
         if (!user.error) {
           this.setState({ auth: { currentUser: user } });
         }
